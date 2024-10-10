@@ -24,11 +24,7 @@ let deleteUser = async (req, res) => {
 }
 let getUpdateUser = async (req, res) => {
     let id = req.params.id;
-    let user = await userService.getUser(id);
-    let userInfo = {};
-    if (user && user.length > 0) {
-        userInfo = user[0]
-    }
+    let userInfo = await userService.getUserById(id);
     return res.render('update-user.ejs', { userInfo })
 }
 
